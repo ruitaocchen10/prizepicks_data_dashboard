@@ -1,0 +1,410 @@
+[
+  {
+    "id": "32ec2bd4ac9e4c40f9f5cbed7e67f837",
+    "sport_key": "americanfootball_nfl",
+    "sport_title": "NFL",
+    "commence_time": "2025-11-14T01:15:00Z",
+    "home_team": "New England Patriots",
+    "away_team": "New York Jets",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:16:50Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Drake Maye",
+                "price": -196,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Drake Maye",
+                "price": 152,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betmgm",
+        "title": "BetMGM",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:21Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Drake Maye",
+                "price": -200,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Drake Maye",
+                "price": 150,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Justin Fields",
+                "price": -118,
+                "point": 0.5
+              },
+              {
+                "name": "Under",
+                "description": "Justin Fields",
+                "price": -110,
+                "point": 0.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:31Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Drake Maye",
+                "price": -172,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Drake Maye",
+                "price": 128,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betonlineag",
+        "title": "BetOnline.ag",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:03Z",
+            "outcomes": [
+              {
+                "name": "Under",
+                "description": "Drake Maye",
+                "price": 140,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Drake Maye",
+                "price": -185,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Justin Fields",
+                "price": -108,
+                "point": 0.5
+              },
+              {
+                "name": "Over",
+                "description": "Justin Fields",
+                "price": -120,
+                "point": 0.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betrivers",
+        "title": "BetRivers",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:17Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Drake Maye",
+                "price": -167,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Drake Maye",
+                "price": 125,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "265f0188945bb81ec64751571eb724cb",
+    "sport_key": "americanfootball_nfl",
+    "sport_title": "NFL",
+    "commence_time": "2025-11-16T14:30:00Z",
+    "home_team": "Miami Dolphins",
+    "away_team": "Washington Commanders",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:08Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Tua Tagovailoa",
+                "price": -164,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Tua Tagovailoa",
+                "price": 128,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Marcus Mariota",
+                "price": 110,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Marcus Mariota",
+                "price": -140,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:27Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Tua Tagovailoa",
+                "price": -172,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Tua Tagovailoa",
+                "price": 128,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Marcus Mariota",
+                "price": 120,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Marcus Mariota",
+                "price": -160,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betonlineag",
+        "title": "BetOnline.ag",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:51Z",
+            "outcomes": [
+              {
+                "name": "Under",
+                "description": "Tua Tagovailoa",
+                "price": 125,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Tua Tagovailoa",
+                "price": -164,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Marcus Mariota",
+                "price": -149,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Marcus Mariota",
+                "price": 115,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "0ae85bbc3711ad0cb94475a40e2364f0",
+    "sport_key": "americanfootball_nfl",
+    "sport_title": "NFL",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "home_team": "Atlanta Falcons",
+    "away_team": "Carolina Panthers",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:44Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Michael Penix Jr.",
+                "price": 101,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Michael Penix Jr.",
+                "price": -129,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Bryce Young",
+                "price": 186,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Bryce Young",
+                "price": -242,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:39Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Michael Penix Jr.",
+                "price": 108,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Michael Penix Jr.",
+                "price": -144,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Bryce Young",
+                "price": 178,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Bryce Young",
+                "price": -245,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betonlineag",
+        "title": "BetOnline.ag",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-11T17:17:49Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Bryce Young",
+                "price": 182,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Bryce Young",
+                "price": -244,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Michael Penix Jr.",
+                "price": 107,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Michael Penix Jr.",
+                "price": -139,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "96377d2fb55e3cef733cecccdecaed5f",
+    "sport_key": "americanfootball_nfl",
+    "sport_title": "NFL",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "home_team": "Buffalo Bills",
+    "away_team": "Tampa Bay Buccaneers",
+    "bookmakers": []
+  },
+  {
+    "id": "229a5e9ce60dcb344a8cc3c97121154e",
+    "sport_key": "americanfootball_nfl",
+    "sport_title": "NFL",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "home_team": "Minnesota Vikings",
+    "away_team": "Chicago Bears",
+    "bookmakers": []
+  }
+]

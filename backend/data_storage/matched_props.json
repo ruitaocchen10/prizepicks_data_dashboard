@@ -3,44 +3,65 @@
     "player": "Drake Maye",
     "game": "New York Jets @ New England Patriots",
     "commence_time": "2025-11-14T01:15:00Z",
-    "prizepicks_line": 324.5,
-    "sportsbook_lines": {
-      "DraftKings": {
-        "line": 242.5,
-        "odds": -111
+    "prizepicks": {
+      "line": 235.5,
+      "team": "NE"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 242.5,
+          "odds": -111
+        },
+        "BetMGM": {
+          "line": 231.5,
+          "odds": -115
+        },
+        "FanDuel": {
+          "line": 241.5,
+          "odds": -114
+        }
       },
-      "BetMGM": {
-        "line": 231.5,
-        "odds": -115
-      },
-      "FanDuel": {
-        "line": 241.5,
-        "odds": -114
-      }
-    }
+      "average_line": 238.5
+    },
+    "line_difference": -3.0
   },
   {
     "player": "Marcus Mariota",
     "game": "Washington Commanders @ Miami Dolphins",
     "commence_time": "2025-11-16T14:30:00Z",
-    "prizepicks_line": 274.5,
-    "sportsbook_lines": {
-      "FanDuel": {
-        "line": 201.5,
-        "odds": -114
-      }
-    }
+    "prizepicks": {
+      "line": 197.5,
+      "team": "WAS"
+    },
+    "sportsbook": {
+      "lines": {
+        "FanDuel": {
+          "line": 201.5,
+          "odds": -114
+        }
+      },
+      "average_line": 201.5
+    },
+    "line_difference": -4.0
   },
   {
     "player": "Tua Tagovailoa",
     "game": "Washington Commanders @ Miami Dolphins",
     "commence_time": "2025-11-16T14:30:00Z",
-    "prizepicks_line": 324.5,
-    "sportsbook_lines": {
-      "FanDuel": {
-        "line": 237.5,
-        "odds": -114
-      }
-    }
+    "prizepicks": {
+      "line": 236.5,
+      "team": "MIA"
+    },
+    "sportsbook": {
+      "lines": {
+        "FanDuel": {
+          "line": 237.5,
+          "odds": -114
+        }
+      },
+      "average_line": 237.5
+    },
+    "line_difference": -1.0
   }
 ]

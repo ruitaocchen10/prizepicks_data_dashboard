@@ -1,0 +1,25 @@
+[
+  {
+    "player": "Justin Fields",
+    "game": "New York Jets @ New England Patriots",
+    "commence_time": "2025-11-14T01:15:00Z",
+    "prizepicks": {
+      "line": 0.5,
+      "team": "NYJ"
+    },
+    "sportsbook": {
+      "lines": {
+        "BetMGM": {
+          "line": 0.5,
+          "odds": -118
+        },
+        "BetOnline.ag": {
+          "line": 0.5,
+          "odds": -120
+        }
+      },
+      "average_line": 0.5
+    },
+    "line_difference": 0.0
+  }
+]
