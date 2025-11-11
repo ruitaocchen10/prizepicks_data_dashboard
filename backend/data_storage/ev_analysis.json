@@ -1,0 +1,41 @@
+[
+  {
+    "player": "Justin Fields",
+    "game": "New York Jets @ New England Patriots",
+    "commence_time": "2025-11-14T01:15:00Z",
+    "prizepicks": {
+      "line": 0.5,
+      "team": "NYJ"
+    },
+    "sportsbook": {
+      "lines": {
+        "BetMGM": {
+          "line": 0.5,
+          "odds": -118
+        },
+        "BetOnline.ag": {
+          "line": 0.5,
+          "odds": -120
+        }
+      },
+      "average_line": 0.5
+    },
+    "line_difference": 0.0,
+    "ev_analysis": {
+      "status": "calculated",
+      "bookmaker_used": "BetMGM",
+      "better_side": "over",
+      "implied_probability": 54.13,
+      "reference_line": 0.5,
+      "reference_odds": -118,
+      "reference_probability": 54.13,
+      "line_difference": 0.0,
+      "probability_adjustment": 0,
+      "risk_level": "high",
+      "risk_color": "orange",
+      "risk_label": "Risky",
+      "breakeven_2pick": 57.74,
+      "edge_over_breakeven": -3.61
+    }
+  }
+]
