@@ -3,3 +3,16 @@ venv/
 __pycache__/
 *.pyc
 .DS_Store
+
+# React / Frontend (ADD THESE)
+frontend/node_modules/
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
