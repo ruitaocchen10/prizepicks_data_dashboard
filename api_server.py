@@ -7,6 +7,13 @@ from flask_cors import CORS
 import json
 import subprocess
 import os
+from database_queries import (  # ADD THIS IMPORT
+    get_top_winners, 
+    get_top_hit_lines, 
+    search_user,
+    get_available_states,
+    get_date_range
+)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
@@ -169,14 +176,164 @@ def health_check():
         'message': 'API server is running'
     }), 200
 
+# ============================================================================
+# USER ANALYTICS ENDPOINTS
+# ============================================================================
+
+@app.route('/api/analytics/top-winners', methods=['GET'])
+def api_top_winners():
+    """
+    GET top 10 winning users
+    Query params:
+        - sort_by: 'revenue' or 'count' (default: 'revenue')
+        - state: US state code or None for all (default: None)
+        - start_date: YYYY-MM-DD format (default: None)
+        - end_date: YYYY-MM-DD format (default: None)
+        - limit: number of results (default: 10)
+    """
+    try:
+        sort_by = request.args.get('sort_by', 'revenue')
+        state = request.args.get('state', None)
+        start_date = request.args.get('start_date', None)
+        end_date = request.args.get('end_date', None)
+        limit = request.args.get('limit', 10, type=int)
+        
+        result = get_top_winners(
+            sort_by=sort_by,
+            state=state,
+            start_date=start_date,
+            end_date=end_date,
+            limit=limit
+        )
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch top winners',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/analytics/top-hit-lines', methods=['GET'])
+def api_top_hit_lines():
+    """
+    GET top 10 hit lines (player props that won)
+    Query params:
+        - sort_by: 'revenue' or 'count' (default: 'revenue')
+        - state: US state code or None for all (default: None)
+        - start_date: YYYY-MM-DD format (default: None)
+        - end_date: YYYY-MM-DD format (default: None)
+        - limit: number of results (default: 10)
+    """
+    try:
+        sort_by = request.args.get('sort_by', 'revenue')
+        state = request.args.get('state', None)
+        start_date = request.args.get('start_date', None)
+        end_date = request.args.get('end_date', None)
+        limit = request.args.get('limit', 10, type=int)
+        
+        result = get_top_hit_lines(
+            sort_by=sort_by,
+            state=state,
+            start_date=start_date,
+            end_date=end_date,
+            limit=limit
+        )
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch top hit lines',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/analytics/user-search', methods=['GET'])
+def api_user_search():
+    """
+    Search for a user by username or email
+    Query params:
+        - q: search query (username or email)
+    """
+    try:
+        query = request.args.get('q', '')
+        
+        if not query:
+            return jsonify({
+                'error': 'Missing search query',
+                'message': 'Please provide a search query using ?q=username'
+            }), 400
+        
+        result = search_user(query)
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to search user',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/analytics/states', methods=['GET'])
+def api_get_states():
+    """
+    GET list of all states with users (for dropdown)
+    """
+    try:
+        states = get_available_states()
+        return jsonify({
+            'status': 'success',
+            'states': states
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch states',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/analytics/date-range', methods=['GET'])
+def api_get_date_range():
+    """
+    GET min and max dates from entries (for date picker bounds)
+    """
+    try:
+        date_range = get_date_range()
+        return jsonify({
+            'status': 'success',
+            'date_range': date_range
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': 'Failed to fetch date range',
+            'message': str(e)
+        }), 500
+
 if __name__ == '__main__':
     print("\n" + "🚀" * 30)
     print("PRIZEPICKS EV DASHBOARD API SERVER")
     print("🚀" * 30)
-    print("\nEndpoints:")
-    print("  GET  /api/ev-data  - Get current EV analysis")
-    print("  POST /api/refresh  - Refresh all data")
-    print("  GET  /api/health   - Health check")
+    
+    print("\n📊 EV Analysis Endpoints:")
+    print("  GET  /api/ev-data              - Get current EV analysis")
+    print("  POST /api/refresh              - Refresh all data")
+    print("  GET  /api/health               - Health check")
+    
+    print("\n👥 User Analytics Endpoints:")
+    print("  GET  /api/analytics/top-winners    - Top winning users")
+    print("  GET  /api/analytics/top-hit-lines  - Top hit player props")
+    print("  GET  /api/analytics/user-search    - Search for user (param: q)")
+    
+    print("\n🔧 Helper Endpoints:")
+    print("  GET  /api/analytics/states         - List of available states")
+    print("  GET  /api/analytics/date-range     - Min/max dates for filters")
+    
+    print("\n💡 Example Usage:")
+    print("  http://localhost:5000/api/analytics/top-winners?sort_by=revenue&state=NY")
+    print("  http://localhost:5000/api/analytics/top-hit-lines?sort_by=count&limit=5")
+    print("  http://localhost:5000/api/analytics/user-search?q=john")
+    
     print("\nServer running at: http://localhost:5000")
     print("Frontend should connect from: http://localhost:3000")
     print("\n" + "="*60 + "\n")
