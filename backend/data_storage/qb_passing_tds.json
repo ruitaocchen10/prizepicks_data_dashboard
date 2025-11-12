@@ -13,18 +13,18 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:16:50Z",
+            "last_update": "2025-11-12T01:24:13Z",
             "outcomes": [
               {
                 "name": "Over",
                 "description": "Drake Maye",
-                "price": -196,
+                "price": -197,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Drake Maye",
-                "price": 152,
+                "price": 153,
                 "point": 1.5
               }
             ]
@@ -37,24 +37,24 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:21Z",
+            "last_update": "2025-11-12T01:24:05Z",
             "outcomes": [
               {
                 "name": "Over",
                 "description": "Drake Maye",
-                "price": -200,
+                "price": -190,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Drake Maye",
-                "price": 150,
+                "price": 140,
                 "point": 1.5
               },
               {
                 "name": "Over",
                 "description": "Justin Fields",
-                "price": -118,
+                "price": -120,
                 "point": 0.5
               },
               {
@@ -73,7 +73,7 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:31Z",
+            "last_update": "2025-11-12T01:24:15Z",
             "outcomes": [
               {
                 "name": "Over",
@@ -97,18 +97,18 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:03Z",
+            "last_update": "2025-11-12T01:23:40Z",
             "outcomes": [
               {
                 "name": "Under",
                 "description": "Drake Maye",
-                "price": 140,
+                "price": 137,
                 "point": 1.5
               },
               {
                 "name": "Over",
                 "description": "Drake Maye",
-                "price": -185,
+                "price": -179,
                 "point": 1.5
               },
               {
@@ -133,18 +133,18 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:17Z",
+            "last_update": "2025-11-12T01:23:28Z",
             "outcomes": [
               {
                 "name": "Over",
                 "description": "Drake Maye",
-                "price": -167,
+                "price": -180,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Drake Maye",
-                "price": 125,
+                "price": 135,
                 "point": 1.5
               }
             ]
@@ -167,7 +167,7 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:08Z",
+            "last_update": "2025-11-12T01:24:00Z",
             "outcomes": [
               {
                 "name": "Over",
@@ -203,7 +203,7 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:27Z",
+            "last_update": "2025-11-12T01:23:04Z",
             "outcomes": [
               {
                 "name": "Over",
@@ -239,30 +239,66 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:51Z",
+            "last_update": "2025-11-12T01:23:49Z",
             "outcomes": [
               {
                 "name": "Under",
                 "description": "Tua Tagovailoa",
-                "price": 125,
+                "price": 128,
                 "point": 1.5
               },
               {
                 "name": "Over",
                 "description": "Tua Tagovailoa",
-                "price": -164,
+                "price": -167,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Marcus Mariota",
-                "price": -149,
+                "price": -147,
                 "point": 1.5
               },
               {
                 "name": "Over",
                 "description": "Marcus Mariota",
-                "price": 115,
+                "price": 113,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betrivers",
+        "title": "BetRivers",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-12T01:23:23Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Marcus Mariota",
+                "price": 114,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Marcus Mariota",
+                "price": -150,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Tua Tagovailoa",
+                "price": -167,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Tua Tagovailoa",
+                "price": 125,
                 "point": 1.5
               }
             ]
@@ -285,18 +321,18 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:44Z",
+            "last_update": "2025-11-12T01:24:06Z",
             "outcomes": [
               {
                 "name": "Over",
                 "description": "Michael Penix Jr.",
-                "price": 101,
+                "price": 109,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Michael Penix Jr.",
-                "price": -129,
+                "price": -139,
                 "point": 1.5
               },
               {
@@ -321,7 +357,7 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:39Z",
+            "last_update": "2025-11-12T01:23:59Z",
             "outcomes": [
               {
                 "name": "Over",
@@ -357,7 +393,7 @@
         "markets": [
           {
             "key": "player_pass_tds",
-            "last_update": "2025-11-11T17:17:49Z",
+            "last_update": "2025-11-12T01:23:43Z",
             "outcomes": [
               {
                 "name": "Over",
@@ -374,13 +410,49 @@
               {
                 "name": "Over",
                 "description": "Michael Penix Jr.",
-                "price": 107,
+                "price": 109,
                 "point": 1.5
               },
               {
                 "name": "Under",
                 "description": "Michael Penix Jr.",
-                "price": -139,
+                "price": -141,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betrivers",
+        "title": "BetRivers",
+        "markets": [
+          {
+            "key": "player_pass_tds",
+            "last_update": "2025-11-12T01:23:47Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "description": "Bryce Young",
+                "price": 195,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Bryce Young",
+                "price": -275,
+                "point": 1.5
+              },
+              {
+                "name": "Over",
+                "description": "Michael Penix Jr.",
+                "price": 112,
+                "point": 1.5
+              },
+              {
+                "name": "Under",
+                "description": "Michael Penix Jr.",
+                "price": -150,
                 "point": 1.5
               }
             ]

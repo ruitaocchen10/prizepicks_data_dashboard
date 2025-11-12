@@ -11,7 +11,7 @@
       "lines": {
         "BetMGM": {
           "line": 0.5,
-          "odds": -118
+          "odds": -120
         },
         "BetOnline.ag": {
           "line": 0.5,
@@ -25,17 +25,17 @@
       "status": "calculated",
       "bookmaker_used": "BetMGM",
       "better_side": "over",
-      "implied_probability": 54.13,
+      "implied_probability": 54.55,
       "reference_line": 0.5,
-      "reference_odds": -118,
-      "reference_probability": 54.13,
+      "reference_odds": -120,
+      "reference_probability": 54.55,
       "line_difference": 0.0,
       "probability_adjustment": 0,
       "risk_level": "high",
       "risk_color": "orange",
       "risk_label": "Risky",
       "breakeven_2pick": 57.74,
-      "edge_over_breakeven": -3.61
+      "edge_over_breakeven": -3.19
     }
   }
 ]

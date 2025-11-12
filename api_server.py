@@ -47,11 +47,14 @@ def refresh_data():
     """
     try:
         print("\n" + "="*60)
-        print("REFRESH REQUEST RECEIVED")
+        print("🔄 REFRESH REQUEST RECEIVED FROM FRONTEND")
         print("="*60)
+        print(f"⏰ Timestamp: {__import__('datetime').datetime.now()}")
         
         # Step 1: Get sportsbook data
-        print("\n[1/4] Running sportsbookapi.py...")
+        print("\n" + "🏈" * 30)
+        print("[1/4] 📊 RUNNING SPORTSBOOKAPI.PY...")
+        print("🏈" * 30)
         result1 = subprocess.run(
             ['python', 'backend/data_collection/sportsbookapi.py'],
             capture_output=True,
@@ -59,14 +62,19 @@ def refresh_data():
             timeout=60  # 60 second timeout
         )
         if result1.returncode != 0:
+            print("❌ SPORTSBOOK API FAILED!")
+            print(f"Error: {result1.stderr}")
             return jsonify({
                 'error': 'Sportsbook API failed',
                 'details': result1.stderr
             }), 500
-        print("✅ Sportsbook data collected")
+        print("✅ SPORTSBOOK DATA COLLECTED SUCCESSFULLY")
+        print(f"Output preview: {result1.stdout[:200]}...")
         
         # Step 2: Get PrizePicks data
-        print("\n[2/4] Running prizepicksapi.py...")
+        print("\n" + "🎯" * 30)
+        print("[2/4] 🎲 RUNNING PRIZEPICKSAPI.PY...")
+        print("🎯" * 30)
         result2 = subprocess.run(
             ['python', 'backend/data_collection/prizepicksapi.py'],
             capture_output=True,
@@ -74,14 +82,19 @@ def refresh_data():
             timeout=30
         )
         if result2.returncode != 0:
+            print("❌ PRIZEPICKS API FAILED!")
+            print(f"Error: {result2.stderr}")
             return jsonify({
                 'error': 'PrizePicks API failed',
                 'details': result2.stderr
             }), 500
-        print("✅ PrizePicks data collected")
+        print("✅ PRIZEPICKS DATA COLLECTED SUCCESSFULLY")
+        print(f"Output preview: {result2.stdout[:200]}...")
         
         # Step 3: Match props
-        print("\n[3/4] Running match_props.py...")
+        print("\n" + "🔗" * 30)
+        print("[3/4] 🔀 RUNNING MATCH_PROPS.PY...")
+        print("🔗" * 30)
         result3 = subprocess.run(
             ['python', 'backend/data_processing/match_props.py'],
             capture_output=True,
@@ -89,14 +102,19 @@ def refresh_data():
             timeout=10
         )
         if result3.returncode != 0:
+            print("❌ PROP MATCHING FAILED!")
+            print(f"Error: {result3.stderr}")
             return jsonify({
                 'error': 'Prop matching failed',
                 'details': result3.stderr
             }), 500
-        print("✅ Props matched")
+        print("✅ PROPS MATCHED SUCCESSFULLY")
+        print(f"Output preview: {result3.stdout[:200]}...")
         
         # Step 4: Calculate EV
-        print("\n[4/4] Running calculate_ev.py...")
+        print("\n" + "💰" * 30)
+        print("[4/4] 📈 RUNNING CALCULATE_EV.PY...")
+        print("💰" * 30)
         result4 = subprocess.run(
             ['python', 'backend/ev_calculation/calculate_ev.py'],
             capture_output=True,
@@ -104,19 +122,27 @@ def refresh_data():
             timeout=10
         )
         if result4.returncode != 0:
+            print("❌ EV CALCULATION FAILED!")
+            print(f"Error: {result4.stderr}")
             return jsonify({
                 'error': 'EV calculation failed',
                 'details': result4.stderr
             }), 500
-        print("✅ EV calculated")
+        print("✅ EV CALCULATED SUCCESSFULLY")
+        print(f"Output preview: {result4.stdout[:200]}...")
         
         print("\n" + "="*60)
-        print("REFRESH COMPLETE!")
-        print("="*60 + "\n")
+        print("🎉 REFRESH COMPLETE! ALL SCRIPTS RAN SUCCESSFULLY")
+        print("="*60)
         
         # Load and return the new data
+        print("\n📂 Loading new ev_analysis.json file...")
         with open(DATA_FILE, 'r') as f:
             data = json.load(f)
+        
+        print(f"✅ Loaded {len(data)} props from new data")
+        print(f"⏰ Completed at: {__import__('datetime').datetime.now()}")
+        print("\n" + "="*60 + "\n")
         
         return jsonify({
             'status': 'success',
