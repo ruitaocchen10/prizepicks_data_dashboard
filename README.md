@@ -2,11 +2,14 @@
 
 An analytics dashboard for monitoring positive expected value (EV) betting opportunities and user behavior patterns on PrizePicks. Built as a basic framework for a tool that could be used by PrizePicks data analysts to identify potentially vulnerable lines and advantageous users.
 
+**Link to Project**: https://prizepicks-data-dashboard.vercel.app/
+
 > **Note**: This project was created for educational purposes only. All data is either publicly available or simulated.
+> **Also Note**: If you're using the link to view the project, I am using the Render free plan so the first load might take > 30 seconds... so just keep that in mind. I am broke sorry.
 
 ---
 
-## 📖 Project Description
+## Project Description
 
 ### The Problem
 PrizePicks is playing the battle against sharp bettors in order to make money. Hobbyists are pretty much always going to lose money in the long run, but the sharp bettors who can monitor sportsbook lines and identify positive expected values in certain picks at certain times are the ones who can potentially profit from PrizePicks in the long run. In order to stay ahead of these betters, PrizePicks needs to: 
@@ -55,7 +58,7 @@ This dashboard provides two core features that would help a platform like PrizeP
 
 ---
 
-## 🚧 Main Struggles
+## Main Struggles
 
 ### 1. **API Rate Limits & Credits**
 **Problem**: Most sportsbook API charge a LOT of money.
@@ -104,7 +107,7 @@ This dashboard provides two core features that would help a platform like PrizeP
 
 ---
 
-## 💡 Things I Learned
+## Things I Learned
 
 ### Technical Skills
 
@@ -148,7 +151,7 @@ This dashboard provides two core features that would help a platform like PrizeP
 - Accepting imperfect data when perfection isn't critical
 - Knowing when to pivot strategies (JSON over SQL tables for initial processing)
 
-## 🚀 Next Steps
+## Next Steps
 
 ### What I Would Love to do Short-Term
 
@@ -170,13 +173,13 @@ This dashboard provides two core features that would help a platform like PrizeP
 **1. AI Agent Integration**
 - Adding an AI Agent to extract VERY high-risk and VERY sharp bettors faster
 
-## 📝 License
+## License
 
 This project is for educational purposes only. All data is publicly available or simulated.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **The Odds API** for providing sports betting data
 - **PrizePicks** for API availability (used for educational purposes)
