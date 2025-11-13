@@ -15,6 +15,8 @@ function UserAnalytics() {
       <div className="analytics-cards-grid">
         <TopWinnersCard />
         <TopHitLinesCard />
+      </div>
+      <div>
         <UserSearchCard />
       </div>
 

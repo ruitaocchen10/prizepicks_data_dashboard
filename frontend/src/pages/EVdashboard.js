@@ -52,7 +52,7 @@ function EVDashboard() {
 
   return (
     <div className="dashboard-container">
-      <div>
+      <div className="EV-dashboard">
         <h2>+EV Opportunities ({evData.length} props)</h2>
         <div className="player-cards">
           {evData.map((prop, index) => (

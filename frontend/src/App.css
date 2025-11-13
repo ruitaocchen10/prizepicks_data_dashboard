@@ -42,9 +42,10 @@ body {
 /* Dashboard Container */
 .dashboard-container {
   display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0 0;
+  padding: 2rem 4rem;
+  gap: 2rem;
+  justify-content: space-between;
 }
 
 .dashboard-container h1 {
@@ -58,15 +59,28 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
   color: #1a1a1a;
-  margin: 2rem 0 1.5rem 0;
+  margin: 0.5rem 0;
+}
+
+.EV-dashboard {
+  margin: 0 0;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  border: 1px solid #f0f0f0;
+  flex: auto;
 }
 
 /* Player Cards Grid - Centered Cards */
 .player-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 320px));
+  grid-template-columns: repeat(auto-fill);
   gap: 2rem;
-  margin-top: 1.5rem;
+  margin: 1rem 0;
   justify-content: left;
 }
 

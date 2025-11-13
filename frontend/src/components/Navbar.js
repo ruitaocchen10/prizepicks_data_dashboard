@@ -33,9 +33,6 @@ function Navbar({ onRefresh }) {
           >
             User Analytics
           </Link>
-        </div>
-
-        <div className="navbar-actions">
           {location.pathname === "/" && (
             <button className="reload-button" onClick={handleRefresh}>
               Reload
