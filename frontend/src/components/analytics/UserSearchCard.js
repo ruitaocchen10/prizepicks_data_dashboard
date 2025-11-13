@@ -98,93 +98,182 @@ function UserSearchCard() {
             </div>
           </div>
 
-          {/* Wallet Section */}
-          <div className="wallet-section">
-            <h4>💰 Wallet</h4>
-            <div className="wallet-stats">
-              <div className="stat">
-                <span className="stat-label">Current Balance:</span>
+          {/* Financial Stats */}
+          <div className="financial-stats">
+            <h4>💰 Financial Stats</h4>
+            <div className="stats-grid">
+              <div className="stat-item">
+                <span className="stat-label">Current Balance</span>
                 <span className="stat-value">
-                  ${result.wallet.current_balance?.toFixed(2)}
+                  ${result.user.current_balance?.toFixed(2)}
                 </span>
               </div>
-              <div className="stat">
-                <span className="stat-label">Total Deposited:</span>
+              <div className="stat-item">
+                <span className="stat-label">Total Deposits</span>
                 <span className="stat-value">
-                  ${result.wallet.total_deposited?.toFixed(2)}
+                  ${result.user.total_deposits?.toFixed(2)}
                 </span>
               </div>
-              <div className="stat">
-                <span className="stat-label">Total Withdrawn:</span>
+              <div className="stat-item">
+                <span className="stat-label">Total Wagered</span>
                 <span className="stat-value">
-                  ${result.wallet.total_withdrawn?.toFixed(2)}
+                  ${result.user.total_wagered?.toFixed(2)}
+                </span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Total Winnings</span>
+                <span className="stat-value">
+                  ${result.user.total_winnings?.toFixed(2)}
+                </span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Net Profit</span>
+                <span
+                  className={`stat-value ${
+                    result.user.net_profit >= 0 ? "positive" : "negative"
+                  }`}
+                >
+                  ${result.user.net_profit?.toFixed(2)}
+                </span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">ROI</span>
+                <span
+                  className={`stat-value ${
+                    result.user.roi_percentage >= 0 ? "positive" : "negative"
+                  }`}
+                >
+                  {result.user.roi_percentage?.toFixed(1)}%
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Betting Performance Section */}
-          <div className="performance-section">
-            <h4>📊 Betting Performance</h4>
-            <div className="performance-grid">
-              <div className="perf-stat">
-                <span className="perf-label">Total Entries:</span>
-                <span className="perf-value">
-                  {result.betting.total_entries}
+          {/* Entry Stats */}
+          <div className="entry-stats">
+            <h4>🎲 Betting Stats</h4>
+            <div className="stats-grid">
+              <div className="stat-item">
+                <span className="stat-label">Total Entries</span>
+                <span className="stat-value">
+                  {result.entry_stats.total_entries}
                 </span>
               </div>
-              <div className="perf-stat">
-                <span className="perf-label">Wins:</span>
-                <span className="perf-value positive">
-                  {result.betting.wins}
+              <div className="stat-item">
+                <span className="stat-label">Wins</span>
+                <span className="stat-value positive">
+                  {result.entry_stats.winning_entries}
                 </span>
               </div>
-              <div className="perf-stat">
-                <span className="perf-label">Losses:</span>
-                <span className="perf-value negative">
-                  {result.betting.losses}
+              <div className="stat-item">
+                <span className="stat-label">Losses</span>
+                <span className="stat-value negative">
+                  {result.entry_stats.losing_entries}
                 </span>
               </div>
-              <div className="perf-stat">
-                <span className="perf-label">Win Rate:</span>
-                <span className="perf-value">
-                  {result.betting.win_rate?.toFixed(1)}%
+              <div className="stat-item">
+                <span className="stat-label">Pending</span>
+                <span className="stat-value">
+                  {result.entry_stats.pending_entries}
                 </span>
               </div>
-              <div className="perf-stat">
-                <span className="perf-label">Total Wagered:</span>
-                <span className="perf-value">
-                  ${result.betting.total_wagered?.toFixed(2)}
+              <div className="stat-item">
+                <span className="stat-label">Win Rate</span>
+                <span className="stat-value">
+                  {result.entry_stats.win_rate_percentage}%
                 </span>
               </div>
-              <div className="perf-stat">
-                <span className="perf-label">Total Winnings:</span>
-                <span className="perf-value">
-                  ${result.betting.total_winnings?.toFixed(2)}
-                </span>
-              </div>
-              <div className="perf-stat">
-                <span className="perf-label">Net Profit:</span>
-                <span
-                  className={`perf-value ${
-                    result.betting.net_profit >= 0 ? "positive" : "negative"
-                  }`}
-                >
-                  ${result.betting.net_profit?.toFixed(2)}
-                </span>
-              </div>
-              <div className="perf-stat">
-                <span className="perf-label">ROI:</span>
-                <span
-                  className={`perf-value ${
-                    result.betting.roi_percentage >= 0 ? "positive" : "negative"
-                  }`}
-                >
-                  {result.betting.roi_percentage?.toFixed(1)}%
+              <div className="stat-item">
+                <span className="stat-label">Avg Entry Size</span>
+                <span className="stat-value">
+                  ${result.entry_stats.average_entry_amount?.toFixed(2)}
                 </span>
               </div>
             </div>
           </div>
+
+          {/* Most Picked Players */}
+          {result.most_picked_players &&
+            result.most_picked_players.length > 0 && (
+              <div className="most-picked-section">
+                <h4>⭐ Most Picked Players</h4>
+                <table className="small-table">
+                  <thead>
+                    <tr>
+                      <th>Player</th>
+                      <th>Times Picked</th>
+                      <th>Hit Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.most_picked_players.slice(0, 5).map((player) => (
+                      <tr key={player.player_name}>
+                        <td className="player-name-cell">
+                          {player.player_name}
+                        </td>
+                        <td>{player.times_picked}</td>
+                        <td className="hit-rate-cell">
+                          {player.hit_rate_percentage}%
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+          {/* Recent Entries */}
+          {result.recent_entries && result.recent_entries.length > 0 && (
+            <div className="recent-entries-section">
+              <h4>📊 Recent Entries</h4>
+              <div>
+                {" "}
+                {/* WRAPPER DIV FOR GRID */}
+                {result.recent_entries.slice(0, 5).map((entry) => (
+                  <div key={entry.entry_id} className="entry-item">
+                    <div className="entry-header">
+                      <span className={`status-badge ${entry.status}`}>
+                        {entry.status}
+                      </span>
+                      <span className="entry-type">{entry.entry_type}</span>
+                      <span className="entry-date">
+                        {new Date(entry.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <div className="entry-details">
+                      <span>Wagered: ${entry.entry_amount?.toFixed(2)}</span>
+                      {entry.status === "won" && (
+                        <span className="positive">
+                          Won: ${entry.actual_payout?.toFixed(2)}
+                        </span>
+                      )}
+                      {entry.status === "lost" && (
+                        <span className="negative">Lost</span>
+                      )}
+                    </div>
+                    {entry.picks && entry.picks.length > 0 && (
+                      <div className="picks-list">
+                        {entry.picks.map((pick, idx) => (
+                          <div key={idx} className="pick-item">
+                            <span className={`pick-result ${pick.result}`}>
+                              {pick.result === "hit"
+                                ? "✓"
+                                : pick.result === "miss"
+                                ? "✗"
+                                : "○"}
+                            </span>
+                            {pick.player_name} {pick.selection.toUpperCase()}{" "}
+                            {pick.line} {pick.stat_type}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>{" "}
+              {/* END WRAPPER DIV */}
+            </div>
+          )}
         </div>
       )}
     </div>

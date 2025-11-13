@@ -62,10 +62,10 @@ function TopWinnersCard() {
       });
   };
 
-  // Fetch on mount and when filters change
+  // Fetch on mount
   useEffect(() => {
     fetchTopWinners();
-  }, [sortBy, state, startDate, endDate, limit]);
+  }, []);
 
   return (
     <div className="analytics-card">
@@ -118,17 +118,17 @@ function TopWinnersCard() {
           <label>Limit:</label>
           <input
             type="number"
-            min="1"
-            max="100"
             value={limit}
+            min="1"
+            max="50"
             onChange={(e) => setLimit(parseInt(e.target.value))}
           />
         </div>
-
-        <button className="fetch-button" onClick={fetchTopWinners}>
-          Refresh
-        </button>
       </div>
+
+      <button className="fetch-button" onClick={fetchTopWinners}>
+        Show Results
+      </button>
 
       {loading && <p className="loading-text">Loading...</p>}
       {error && <p className="error-text">Error: {error}</p>}
@@ -140,23 +140,25 @@ function TopWinnersCard() {
               <tr>
                 <th>Rank</th>
                 <th>Username</th>
-                <th>Email</th>
                 <th>State</th>
+                <th>Entries</th>
                 <th>Wins</th>
-                <th>Total Wagered</th>
-                <th>Total Won</th>
+                <th>Win Rate</th>
+                <th>Wagered</th>
+                <th>Won</th>
                 <th>Net Profit</th>
-                <th>ROI %</th>
+                <th>ROI</th>
               </tr>
             </thead>
             <tbody>
               {results.map((user, index) => (
                 <tr key={user.user_id}>
                   <td>{index + 1}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
+                  <td className="username-cell">{user.username}</td>
                   <td>{user.state}</td>
-                  <td>{user.wins}</td>
+                  <td>{user.total_entries}</td>
+                  <td>{user.winning_entries}</td>
+                  <td>{user.win_rate_percentage}%</td>
                   <td>${user.total_wagered?.toFixed(2)}</td>
                   <td>${user.total_winnings?.toFixed(2)}</td>
                   <td
