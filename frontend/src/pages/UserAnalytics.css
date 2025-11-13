@@ -1,11 +1,16 @@
+/* User Analytics Dashboard - Purple Theme */
+
 .user-analytics-container {
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  background: #f8f9fa;
+  min-height: calc(100vh - 80px);
 }
 
 .user-analytics-container h1 {
   font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   color: #1a1a1a;
 }
@@ -14,6 +19,7 @@
   font-size: 1.1rem;
   color: #666;
   margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 .analytics-cards-grid {
@@ -32,5 +38,15 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   .analytics-cards-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .user-analytics-container {
+    padding: 1rem;
+  }
+
+  .user-analytics-container h1 {
+    font-size: 2rem;
   }
 }

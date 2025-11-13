@@ -13,32 +13,36 @@ function Navbar({ onRefresh }) {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <h1>PrizePicks Dashboard</h1>
-      </div>
+      <div className="navbar-content">
+        <div className="navbar-brand">
+          <h1>PrizePicks Analytics</h1>
+        </div>
 
-      <div className="navbar-links">
-        <Link
-          to="/"
-          className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
-        >
-          EV Analysis
-        </Link>
-        <Link
-          to="/analytics"
-          className={`nav-link ${
-            location.pathname === "/analytics" ? "active" : ""
-          }`}
-        >
-          User Analytics
-        </Link>
-      </div>
+        <div className="navbar-center">
+          <Link
+            to="/"
+            className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+          >
+            EV Analysis
+          </Link>
+          <Link
+            to="/analytics"
+            className={`nav-link ${
+              location.pathname === "/analytics" ? "active" : ""
+            }`}
+          >
+            User Analytics
+          </Link>
+        </div>
 
-      {location.pathname === "/" && (
-        <button className="refresh-button" onClick={handleRefresh}>
-          Refresh Data
-        </button>
-      )}
+        <div className="navbar-actions">
+          {location.pathname === "/" && (
+            <button className="reload-button" onClick={handleRefresh}>
+              Reload
+            </button>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }

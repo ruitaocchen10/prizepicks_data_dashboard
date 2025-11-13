@@ -52,15 +52,15 @@ function EVDashboard() {
 
   return (
     <div className="dashboard-container">
-      <h1>PrizePicks EV Dashboard</h1>
-      <BreakevenTable />
-
-      <h2>+EV Opportunities ({evData.length} props)</h2>
-      <div className="player-cards">
-        {evData.map((prop, index) => (
-          <PlayerCard key={index} propData={prop} />
-        ))}
+      <div>
+        <h2>+EV Opportunities ({evData.length} props)</h2>
+        <div className="player-cards">
+          {evData.map((prop, index) => (
+            <PlayerCard key={index} propData={prop} />
+          ))}
+        </div>
       </div>
+      <BreakevenTable />
     </div>
   );
 }

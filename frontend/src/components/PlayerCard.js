@@ -2,72 +2,58 @@ import React from "react";
 import "./PlayerCard.css";
 
 function PlayerCard({ propData }) {
-  // Extract data from the prop
-  const { player, game, prizepicks, ev_analysis } = propData;
+  // Determine if over or under
+  const isOver = propData.ev_analysis.better_side === "over";
 
-  // If no EV analysis, show error state
-  if (ev_analysis.status !== "calculated") {
-    return (
-      <div className="player-card error">
-        <h3>{player}</h3>
-        <p className="error-message">{ev_analysis.message}</p>
-      </div>
-    );
-  }
+  // Get the implied probability (chance of hitting)
+  const impliedProbability = propData.ev_analysis.implied_probability;
+  const evPercentage = `${impliedProbability.toFixed(2)}%`;
 
-  // Extract EV data
-  const {
-    better_side,
-    implied_probability,
-    risk_color,
-    risk_label,
-    edge_over_breakeven,
-    bookmaker_used,
-    reference_line,
-  } = ev_analysis;
+  // Get EV value
+  const evValue = propData.ev_analysis.edge_over_breakeven;
+
+  // Determine EV class based on risk level or edge
+  const getEvClass = () => {
+    if (evValue > 3) return ""; // Positive EV (green)
+    if (evValue > 0) return "risky"; // Low positive (orange)
+    return "negative"; // Negative (red)
+  };
+
+  // Get bookmaker used
+  const bookmaker = propData.ev_analysis.bookmaker_used;
 
   return (
-    <div
-      className="player-card"
-      style={{ borderLeft: `5px solid ${risk_color}` }}
-    >
-      {/* Header */}
-      <div className="card-header">
-        <h3 className="player-name">{player}</h3>
-        <span className="team-badge">{prizepicks.team}</span>
-      </div>
+    <div className="player-card">
+      {/* Team Badge */}
+      <div className="team-badge">{propData.prizepicks.team}</div>
 
-      {/* Game Info */}
-      <p className="game-info">{game}</p>
+      {/* Player Name */}
+      <h3 className="player-name">{propData.player}</h3>
 
-      {/* Main Prop Display */}
-      <div className="prop-display">
-        <span className="prop-side">{better_side.toUpperCase()}</span>
-        <span className="prop-line">{prizepicks.line} TDs</span>
-      </div>
+      {/* Matchup */}
+      <p className="matchup-info">{propData.game}</p>
 
-      {/* Probability Display */}
-      <div className="probability-section">
-        <div
-          className="probability-circle"
-          style={{ backgroundColor: risk_color }}
-        >
-          <span className="probability-number">{implied_probability}%</span>
-        </div>
-        <div className="probability-details">
-          <p className="risk-label">{risk_label}</p>
-          <p className="edge-label">
-            {edge_over_breakeven > 0 ? "+" : ""}
-            {edge_over_breakeven.toFixed(1)}% vs breakeven
-          </p>
+      {/* Prop Line */}
+      <div className="prop-line-container">
+        <div className="prop-line">
+          <span className={isOver ? "arrow-up" : "arrow-down"}>
+            {isOver ? "↑" : "↓"}
+          </span>
+          <span className={`prop-direction ${isOver ? "over" : "under"}`}>
+            {isOver ? "Over" : "Under"} {propData.prizepicks.line} TDs
+            <span className="prop-source">{bookmaker}</span>
+          </span>
         </div>
       </div>
 
-      {/* Reference Info */}
-      <div className="reference-info">
-        <p className="reference-line">
-          {bookmaker_used}: {reference_line} TDs
-        </p>
+      {/* EV Display */}
+      <div className={`ev-display ${getEvClass()}`}>
+        <div className="ev-percentage">{impliedProbability}%</div>
+        <div className="ev-label">{getEvClass()}</div>
+        <div className="ev-description">
+          {evValue > 0 ? "+" : ""}
+          {evValue.toFixed(1)}% vs breakeven
+        </div>
       </div>
     </div>
   );

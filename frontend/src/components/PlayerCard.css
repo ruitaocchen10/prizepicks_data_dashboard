@@ -1,132 +1,185 @@
+/* Player Card - Exact Figma Match */
+
 .player-card {
   background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  border-left: 5px solid #ccc;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 300px;
+  min-width: 280px;
 }
 
 .player-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.player-card.error {
-  border-left-color: #ff6b6b;
-  background: #fff5f5;
-}
-
-/* Header */
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.player-name {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0;
-}
-
+/* Team Badge - Purple Pill at Top */
 .team-badge {
-  background: #3498db;
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: #6c2bd9;
   color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
 }
 
-/* Game Info */
-.game-info {
-  color: #7f8c8d;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-}
-
-/* Prop Display */
-.prop-display {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-}
-
-.prop-side {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.prop-line {
+/* Player Name */
+.player-name {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
 }
 
-/* Probability Section */
-.probability-section {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
+/* Matchup Info */
+.matchup-info {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+  line-height: 1.3;
 }
 
-.probability-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+/* Prop Line Container */
+.prop-line-container {
+  width: 100%;
+  margin: 0 0 1.25rem 0;
+}
+
+/* Prop Line - Light Gray Background */
+.prop-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  gap: 0.5rem;
+  padding: 0.9rem 1.25rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+  width: 100%;
 }
 
-.probability-number {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+.arrow-up,
+.arrow-down {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.probability-details {
-  flex: 1;
+.arrow-up {
+  color: #2e7d32;
 }
 
-.risk-label {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0 0 5px 0;
+.arrow-down {
+  color: #c62828;
 }
 
-.edge-label {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin: 0;
+.prop-direction {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  gap: 0.25rem;
 }
 
-/* Reference Info */
-.reference-info {
-  padding-top: 15px;
-  border-top: 1px solid #ecf0f1;
+.prop-direction.over {
+  color: #2e7d32;
 }
 
-.reference-line {
-  font-size: 0.85rem;
-  color: #95a5a6;
-  margin: 0;
+.prop-direction.under {
+  color: #c62828;
 }
 
-/* Error Message */
-.error-message {
-  color: #e74c3c;
-  font-style: italic;
+/* Bookmaker Source */
+.prop-source {
+  font-size: 0.6rem;
+  color: #888;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  text-align: left;
+}
+
+/* EV Display - Green Box */
+.ev-display {
+  background: #e8f5e9;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ev-percentage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 0.15rem;
+  line-height: 1;
+}
+
+.ev-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.15rem;
+}
+
+.ev-description {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Risky Variant (if EV is low positive) */
+.ev-display.risky {
+  background: #fff3e0;
+}
+
+.ev-display.risky .ev-percentage {
+  color: #f57c00;
+}
+
+/* Negative EV */
+.ev-display.negative {
+  background: #ffebee;
+}
+
+.ev-display.negative .ev-percentage {
+  color: #c62828;
+}
+
+.ev-display.negative .ev-label {
+  content: "Negative EV";
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .player-card {
+    padding: 1.5rem;
+    max-width: 100%;
+    min-width: 260px;
+  }
+
+  .player-name {
+    font-size: 1.35rem;
+  }
+
+  .ev-percentage {
+    font-size: 2rem;
+  }
 }

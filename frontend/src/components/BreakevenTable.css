@@ -1,124 +1,172 @@
+/* Breakeven Table - Exact Figma Match */
+
 .breakeven-container {
   background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  border: 1px solid #f0f0f0;
+  max-width: 500px;
 }
 
-.breakeven-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0 0 10px 0;
+.breakeven-container h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .breakeven-subtitle {
-  color: #7f8c8d;
-  margin: 0 0 20px 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .breakeven-table {
-  border-radius: 8px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #ecf0f1;
 }
 
-.table-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-weight: bold;
-  padding: 15px;
+/* Purple Header */
+.breakeven-table thead {
+  background: #6c2bd9;
 }
 
-.header-cell {
+.breakeven-table th {
+  padding: 1rem 1.5rem;
   text-align: center;
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+/* Table Body */
+.breakeven-table tbody tr {
+  transition: transform 0.2s ease;
+}
+
+.breakeven-table td {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+}
+
+/* Slip Type Styling */
+.slip-type {
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
-.table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 15px;
-  background: white;
-  border-bottom: 1px solid #ecf0f1;
-  transition: background-color 0.2s;
-  border-left: 4px solid #ccc;
+/* Color-coded rows matching Figma */
+
+/* 2 Power - Light Peach/Orange */
+.breakeven-table tbody tr:nth-child(1) {
+  background: #fff4e6;
 }
 
-.table-row:hover {
-  background: #f8f9fa;
+.breakeven-table tbody tr:nth-child(1) .slip-type,
+.breakeven-table tbody tr:nth-child(1) .breakeven-percentage {
+  color: #ff9800;
 }
 
-.table-row:last-child {
-  border-bottom: none;
+/* 3 Power - Light Pink */
+.breakeven-table tbody tr:nth-child(2) {
+  background: #ffe8f0;
 }
 
-.table-cell {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.breakeven-table tbody tr:nth-child(2) .slip-type,
+.breakeven-table tbody tr:nth-child(2) .breakeven-percentage {
+  color: #e91e63;
 }
 
-.slip-type {
-  font-weight: 600;
-  color: #2c3e50;
+/* 3 Flex - Light Pink (same as 3 Power) */
+.breakeven-table tbody tr:nth-child(3) {
+  background: #ffe8f0;
 }
 
-.rate {
-  font-weight: bold;
+.breakeven-table tbody tr:nth-child(3) .slip-type,
+.breakeven-table tbody tr:nth-child(3) .breakeven-percentage {
+  color: #e91e63;
 }
 
-.rate-number {
+/* 4 Power - Light Yellow */
+.breakeven-table tbody tr:nth-child(4) {
+  background: #fff9e6;
+}
+
+.breakeven-table tbody tr:nth-child(4) .slip-type,
+.breakeven-table tbody tr:nth-child(4) .breakeven-percentage {
+  color: #ffc107;
+}
+
+/* 4 Flex - Light Yellow/Green */
+.breakeven-table tbody tr:nth-child(5) {
+  background: #fff9e6;
+}
+
+.breakeven-table tbody tr:nth-child(5) .slip-type,
+.breakeven-table tbody tr:nth-child(5) .breakeven-percentage {
+  color: #ffc107;
+}
+
+/* 5 Flex - Light Green */
+.breakeven-table tbody tr:nth-child(6) {
   background: #e8f5e9;
-  color: #2ed573;
-  padding: 5px 12px;
-  border-radius: 12px;
-  font-size: 1rem;
 }
 
-.american {
-  color: #7f8c8d;
-  font-family: monospace;
+.breakeven-table tbody tr:nth-child(6) .slip-type,
+.breakeven-table tbody tr:nth-child(6) .breakeven-percentage {
+  color: #4caf50;
 }
 
-.breakeven-footer {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #ecf0f1;
+/* 6 Flex - Light Green */
+.breakeven-table tbody tr:nth-child(7) {
+  background: #e8f5e9;
 }
 
-.footer-note {
-  color: #95a5a6;
-  font-size: 0.9rem;
-  margin: 0;
-  text-align: center;
+.breakeven-table tbody tr:nth-child(7) .slip-type,
+.breakeven-table tbody tr:nth-child(7) .breakeven-percentage {
+  color: #4caf50;
 }
 
-.footer-note strong {
-  color: #667eea;
+/* Hover effect */
+.breakeven-table tbody tr:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .table-header,
-  .table-row {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .breakeven-container {
+    padding: 1.5rem;
+    max-width: 100%;
   }
 
-  .header-cell,
-  .table-cell {
-    text-align: left;
+  .breakeven-table {
+    font-size: 0.85rem;
   }
 
-  .table-cell::before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 10px;
+  .breakeven-table th,
+  .breakeven-table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .breakeven-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .breakeven-subtitle {
+    font-size: 0.85rem;
   }
 }
