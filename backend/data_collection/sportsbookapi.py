@@ -8,7 +8,7 @@ API_KEY = os.getenv('ODDS_API_KEY') # get api key from .env
 
 SPORT = 'americanfootball_nfl'
 REGIONS = 'us'
-MARKETS = 'player_pass_tds'  # Just QB passing TDs!
+MARKETS = 'player_pass_yds'  # Changed from player_pass_tds to player_pass_yds!
 MAX_GAMES = 5  # Limit to 5 games
 
 # Step 1: Get all NFL games
@@ -29,7 +29,7 @@ if games_response.status_code != 200: # 200 is successful
 
 games = games_response.json()
 print(f"Found {len(games)} NFL games")
-print(f"Pulling QB passing TDs for first {MAX_GAMES} games\n")
+print(f"Pulling QB passing yards for first {MAX_GAMES} games\n")
 
 # Step 2: Get QB passing yards props for first 5 games only
 all_props = []
@@ -53,11 +53,11 @@ for i, game in enumerate(games[:MAX_GAMES], 1):  # Only first 5 games
 
 os.makedirs('backend/data_storage', exist_ok=True)  # Create folder if it doesn't exist
 # Save to file for later use
-with open('backend/data_storage/qb_passing_tds.json', 'w') as f:
+with open('backend/data_storage/qb_passing_yards.json', 'w') as f:  # Changed filename from qb_passing_tds.json
     json.dump(all_props, f, indent=2)
 
-print(f"✅ Successfully pulled QB passing TDs for {len(all_props)} games")
-print(f"📁 Saved to backend/data_storage/qb_passing_tds.json")
+print(f"✅ Successfully pulled QB passing yards for {len(all_props)} games")
+print(f"📁 Saved to backend/data_storage/qb_passing_yards.json")  # Changed print statement
 print(f"💳 Credits remaining: {props_response.headers.get('x-requests-remaining')}")
 print(f"💳 Credits used this month: {props_response.headers.get('x-requests-used')}")
 print(f"💰 Credits used this call: 5 (1 per game)")

@@ -1,0 +1,189 @@
+[
+  {
+    "player": "Drake Maye",
+    "game": "New York Jets @ New England Patriots",
+    "commence_time": "2025-11-14T01:15:00Z",
+    "prizepicks": {
+      "line": 237.5,
+      "team": "NE"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 237.5,
+          "odds": -111
+        },
+        "BetMGM": {
+          "line": 237.5,
+          "odds": -115
+        },
+        "FanDuel": {
+          "line": 236.5,
+          "odds": -114
+        },
+        "BetOnline.ag": {
+          "line": 237.5,
+          "odds": -116
+        },
+        "BetRivers": {
+          "line": 235.5,
+          "odds": -115
+        },
+        "Bovada": {
+          "line": 241.5,
+          "odds": 105
+        }
+      },
+      "average_line": 237.7
+    },
+    "line_difference": -0.2
+  },
+  {
+    "player": "Tua Tagovailoa",
+    "game": "Washington Commanders @ Miami Dolphins",
+    "commence_time": "2025-11-16T14:30:00Z",
+    "prizepicks": {
+      "line": 235.5,
+      "team": "MIA"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 232.5,
+          "odds": -113
+        },
+        "FanDuel": {
+          "line": 233.5,
+          "odds": -114
+        },
+        "BetMGM": {
+          "line": 238.5,
+          "odds": -115
+        },
+        "Bovada": {
+          "line": 235.5,
+          "odds": -115
+        },
+        "BetOnline.ag": {
+          "line": 235.5,
+          "odds": -112
+        },
+        "BetRivers": {
+          "line": 231.5,
+          "odds": -114
+        }
+      },
+      "average_line": 234.5
+    },
+    "line_difference": 1.0
+  },
+  {
+    "player": "Marcus Mariota",
+    "game": "Washington Commanders @ Miami Dolphins",
+    "commence_time": "2025-11-16T14:30:00Z",
+    "prizepicks": {
+      "line": 203.5,
+      "team": "WAS"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 201.5,
+          "odds": -113
+        },
+        "FanDuel": {
+          "line": 202.5,
+          "odds": -114
+        },
+        "BetMGM": {
+          "line": 203.5,
+          "odds": -118
+        },
+        "Bovada": {
+          "line": 201.5,
+          "odds": -130
+        },
+        "BetOnline.ag": {
+          "line": 201.5,
+          "odds": -123
+        },
+        "BetRivers": {
+          "line": 198.5,
+          "odds": -117
+        }
+      },
+      "average_line": 201.5
+    },
+    "line_difference": 2.0
+  },
+  {
+    "player": "Bryce Young",
+    "game": "Carolina Panthers @ Atlanta Falcons",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "prizepicks": {
+      "line": 161.5,
+      "team": "CAR"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 164.5,
+          "odds": -114
+        },
+        "FanDuel": {
+          "line": 162.5,
+          "odds": -114
+        },
+        "BetOnline.ag": {
+          "line": 164.5,
+          "odds": -114
+        },
+        "BetRivers": {
+          "line": 160.5,
+          "odds": -117
+        },
+        "BetMGM": {
+          "line": 165.5,
+          "odds": -115
+        }
+      },
+      "average_line": 163.5
+    },
+    "line_difference": -2.0
+  },
+  {
+    "player": "J.J. McCarthy",
+    "game": "Chicago Bears @ Minnesota Vikings",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "prizepicks": {
+      "line": 219.5,
+      "team": "MIN"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 216.5,
+          "odds": -111
+        },
+        "BetMGM": {
+          "line": 221.5,
+          "odds": -115
+        },
+        "FanDuel": {
+          "line": 215.5,
+          "odds": -114
+        },
+        "BetOnline.ag": {
+          "line": 219.5,
+          "odds": -114
+        },
+        "BetRivers": {
+          "line": 218.5,
+          "odds": -117
+        }
+      },
+      "average_line": 218.3
+    },
+    "line_difference": 1.2
+  }
+]

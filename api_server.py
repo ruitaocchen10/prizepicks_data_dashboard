@@ -47,10 +47,10 @@ def refresh_data():
     """
     POST endpoint to refresh all data
     Runs all backend scripts in sequence:
-    1. sportsbookapi.py - Get sportsbook TD lines
+    1. sportsbookapi.py - Get sportsbook passing yards lines
     2. prizepicksapi.py - Get PrizePicks props
-    3. match_props.py - Match the props
-    4. calculate_ev.py - Calculate EV
+    3. match_props.py - Match the props (±2.5 yard tolerance)
+    4. calculate_ev.py - Calculate EV with probability adjustments
     """
     try:
         print("\n" + "="*60)
@@ -60,7 +60,7 @@ def refresh_data():
         
         # Step 1: Get sportsbook data
         print("\n" + "🏈" * 30)
-        print("[1/4] 📊 RUNNING SPORTSBOOKAPI.PY...")
+        print("[1/4] 📊 RUNNING SPORTSBOOKAPI.PY (Passing Yards)...")
         print("🏈" * 30)
         result1 = subprocess.run(
             ['python', 'backend/data_collection/sportsbookapi.py'],
@@ -100,7 +100,7 @@ def refresh_data():
         
         # Step 3: Match props
         print("\n" + "🔗" * 30)
-        print("[3/4] 🔀 RUNNING MATCH_PROPS.PY...")
+        print("[3/4] 🔀 RUNNING MATCH_PROPS.PY (±2.5 yard tolerance)...")
         print("🔗" * 30)
         result3 = subprocess.run(
             ['python', 'backend/data_processing/match_props.py'],
@@ -120,7 +120,7 @@ def refresh_data():
         
         # Step 4: Calculate EV
         print("\n" + "💰" * 30)
-        print("[4/4] 📈 RUNNING CALCULATE_EV.PY...")
+        print("[4/4] 📈 RUNNING CALCULATE_EV.PY (with probability adjustments)...")
         print("💰" * 30)
         result4 = subprocess.run(
             ['python', 'backend/ev_calculation/calculate_ev.py'],

@@ -1,41 +1,284 @@
 [
   {
-    "player": "Justin Fields",
+    "player": "Drake Maye",
     "game": "New York Jets @ New England Patriots",
     "commence_time": "2025-11-14T01:15:00Z",
     "prizepicks": {
-      "line": 0.5,
-      "team": "NYJ"
+      "line": 237.5,
+      "team": "NE"
     },
     "sportsbook": {
       "lines": {
+        "DraftKings": {
+          "line": 237.5,
+          "odds": -111
+        },
         "BetMGM": {
-          "line": 0.5,
-          "odds": -120
+          "line": 237.5,
+          "odds": -115
+        },
+        "FanDuel": {
+          "line": 236.5,
+          "odds": -114
         },
         "BetOnline.ag": {
-          "line": 0.5,
-          "odds": -120
+          "line": 237.5,
+          "odds": -116
+        },
+        "BetRivers": {
+          "line": 235.5,
+          "odds": -115
+        },
+        "Bovada": {
+          "line": 241.5,
+          "odds": 105
         }
       },
-      "average_line": 0.5
+      "average_line": 237.7
     },
-    "line_difference": 0.0,
+    "line_difference": -0.2,
     "ev_analysis": {
       "status": "calculated",
-      "bookmaker_used": "BetMGM",
+      "bookmaker_used": "FanDuel",
       "better_side": "over",
-      "implied_probability": 54.55,
-      "reference_line": 0.5,
-      "reference_odds": -120,
-      "reference_probability": 54.55,
-      "line_difference": 0.0,
-      "probability_adjustment": 0,
+      "implied_probability": 51.27,
+      "adjusted_over_probability": 51.27,
+      "adjusted_under_probability": 48.73,
+      "reference_line": 236.5,
+      "reference_odds": -114,
+      "sportsbook_over_probability": 53.27,
+      "line_difference": -1.0,
+      "probability_adjustment": -2.0,
+      "yards_slope_used": 0.02,
       "risk_level": "high",
       "risk_color": "orange",
       "risk_label": "Risky",
       "breakeven_2pick": 57.74,
-      "edge_over_breakeven": -3.19
+      "edge_over_breakeven": -6.47
+    }
+  },
+  {
+    "player": "Tua Tagovailoa",
+    "game": "Washington Commanders @ Miami Dolphins",
+    "commence_time": "2025-11-16T14:30:00Z",
+    "prizepicks": {
+      "line": 235.5,
+      "team": "MIA"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 232.5,
+          "odds": -113
+        },
+        "FanDuel": {
+          "line": 233.5,
+          "odds": -114
+        },
+        "BetMGM": {
+          "line": 238.5,
+          "odds": -115
+        },
+        "Bovada": {
+          "line": 235.5,
+          "odds": -115
+        },
+        "BetOnline.ag": {
+          "line": 235.5,
+          "odds": -112
+        },
+        "BetRivers": {
+          "line": 231.5,
+          "odds": -114
+        }
+      },
+      "average_line": 234.5
+    },
+    "line_difference": 1.0,
+    "ev_analysis": {
+      "status": "calculated",
+      "bookmaker_used": "FanDuel",
+      "better_side": "under",
+      "implied_probability": 50.73,
+      "adjusted_over_probability": 49.27,
+      "adjusted_under_probability": 50.73,
+      "reference_line": 233.5,
+      "reference_odds": -114,
+      "sportsbook_over_probability": 53.27,
+      "line_difference": -2.0,
+      "probability_adjustment": -4.0,
+      "yards_slope_used": 0.02,
+      "risk_level": "high",
+      "risk_color": "orange",
+      "risk_label": "Risky",
+      "breakeven_2pick": 57.74,
+      "edge_over_breakeven": -7.01
+    }
+  },
+  {
+    "player": "Marcus Mariota",
+    "game": "Washington Commanders @ Miami Dolphins",
+    "commence_time": "2025-11-16T14:30:00Z",
+    "prizepicks": {
+      "line": 203.5,
+      "team": "WAS"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 201.5,
+          "odds": -113
+        },
+        "FanDuel": {
+          "line": 202.5,
+          "odds": -114
+        },
+        "BetMGM": {
+          "line": 203.5,
+          "odds": -118
+        },
+        "Bovada": {
+          "line": 201.5,
+          "odds": -130
+        },
+        "BetOnline.ag": {
+          "line": 201.5,
+          "odds": -123
+        },
+        "BetRivers": {
+          "line": 198.5,
+          "odds": -117
+        }
+      },
+      "average_line": 201.5
+    },
+    "line_difference": 2.0,
+    "ev_analysis": {
+      "status": "calculated",
+      "bookmaker_used": "FanDuel",
+      "better_side": "over",
+      "implied_probability": 51.27,
+      "adjusted_over_probability": 51.27,
+      "adjusted_under_probability": 48.73,
+      "reference_line": 202.5,
+      "reference_odds": -114,
+      "sportsbook_over_probability": 53.27,
+      "line_difference": -1.0,
+      "probability_adjustment": -2.0,
+      "yards_slope_used": 0.02,
+      "risk_level": "high",
+      "risk_color": "orange",
+      "risk_label": "Risky",
+      "breakeven_2pick": 57.74,
+      "edge_over_breakeven": -6.47
+    }
+  },
+  {
+    "player": "Bryce Young",
+    "game": "Carolina Panthers @ Atlanta Falcons",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "prizepicks": {
+      "line": 161.5,
+      "team": "CAR"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 164.5,
+          "odds": -114
+        },
+        "FanDuel": {
+          "line": 162.5,
+          "odds": -114
+        },
+        "BetOnline.ag": {
+          "line": 164.5,
+          "odds": -114
+        },
+        "BetRivers": {
+          "line": 160.5,
+          "odds": -117
+        },
+        "BetMGM": {
+          "line": 165.5,
+          "odds": -115
+        }
+      },
+      "average_line": 163.5
+    },
+    "line_difference": -2.0,
+    "ev_analysis": {
+      "status": "calculated",
+      "bookmaker_used": "FanDuel",
+      "better_side": "over",
+      "implied_probability": 55.27,
+      "adjusted_over_probability": 55.27,
+      "adjusted_under_probability": 44.73,
+      "reference_line": 162.5,
+      "reference_odds": -114,
+      "sportsbook_over_probability": 53.27,
+      "line_difference": 1.0,
+      "probability_adjustment": 2.0,
+      "yards_slope_used": 0.02,
+      "risk_level": "moderate",
+      "risk_color": "yellow",
+      "risk_label": "Marginal",
+      "breakeven_2pick": 57.74,
+      "edge_over_breakeven": -2.47
+    }
+  },
+  {
+    "player": "J.J. McCarthy",
+    "game": "Chicago Bears @ Minnesota Vikings",
+    "commence_time": "2025-11-16T18:00:00Z",
+    "prizepicks": {
+      "line": 219.5,
+      "team": "MIN"
+    },
+    "sportsbook": {
+      "lines": {
+        "DraftKings": {
+          "line": 216.5,
+          "odds": -111
+        },
+        "BetMGM": {
+          "line": 221.5,
+          "odds": -115
+        },
+        "FanDuel": {
+          "line": 215.5,
+          "odds": -114
+        },
+        "BetOnline.ag": {
+          "line": 219.5,
+          "odds": -114
+        },
+        "BetRivers": {
+          "line": 218.5,
+          "odds": -117
+        }
+      },
+      "average_line": 218.3
+    },
+    "line_difference": 1.2,
+    "ev_analysis": {
+      "status": "calculated",
+      "bookmaker_used": "FanDuel",
+      "better_side": "under",
+      "implied_probability": 54.73,
+      "adjusted_over_probability": 45.27,
+      "adjusted_under_probability": 54.73,
+      "reference_line": 215.5,
+      "reference_odds": -114,
+      "sportsbook_over_probability": 53.27,
+      "line_difference": -4.0,
+      "probability_adjustment": -8.0,
+      "yards_slope_used": 0.02,
+      "risk_level": "high",
+      "risk_color": "orange",
+      "risk_label": "Risky",
+      "breakeven_2pick": 57.74,
+      "edge_over_breakeven": -3.01
     }
   }
 ]

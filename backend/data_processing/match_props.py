@@ -1,9 +1,12 @@
 """
 FIXED Match props between Sportsbook and PrizePicks
 Only matches STANDARD lines (not demon/goblin)
-UPDATED FOR PASSING TDs
+UPDATED FOR PASSING YARDS with ±2.5 yard tolerance
 """
 import json
+
+# Tolerance for line matching (in yards)
+LINE_TOLERANCE = 2.5
 
 def load_data():
     """Load both datasets"""
@@ -11,7 +14,7 @@ def load_data():
     print("LOADING DATA")
     print("="*60)
     
-    with open('backend/data_storage/qb_passing_tds.json', 'r') as f:
+    with open('backend/data_storage/qb_passing_yards.json', 'r') as f:
         sportsbook_data = json.load(f)
     print("✅ Loaded sportsbook data")
     
@@ -37,7 +40,7 @@ def extract_sportsbook_players(games):
         
         for bookmaker in game.get('bookmakers', []):
             for market in bookmaker.get('markets', []):
-                if market['key'] == 'player_pass_tds':
+                if market['key'] == 'player_pass_yds':  # Changed from player_pass_tds
                     for outcome in market['outcomes']:
                         player_name = outcome['description']
                         
@@ -64,7 +67,7 @@ def extract_sportsbook_players(games):
 
 def extract_prizepicks_standard_lines(prizepicks_data):
     """
-    Extract ONLY STANDARD 'Pass TDs' lines from PrizePicks
+    Extract ONLY STANDARD 'Pass Yards' lines from PrizePicks
     Filters out demon and goblin lines
     Returns: dict with player names as keys
     """
@@ -81,7 +84,7 @@ def extract_prizepicks_standard_lines(prizepicks_data):
                 'team': item['attributes'].get('team', 'N/A')
             }
     
-    # Extract ONLY standard Pass TDs lines
+    # Extract ONLY standard Pass Yards lines
     standard_lines = {}
     
     for projection in prizepicks_data.get('data', []):
@@ -90,10 +93,10 @@ def extract_prizepicks_standard_lines(prizepicks_data):
         adjusted_odds = projection['attributes'].get('adjusted_odds')
         
         # CRITICAL FILTERS:
-        # 1. Must be "Pass TDs" (not Pass+Rush TDs)
+        # 1. Must be "Pass Yards" (NOT "Pass+Rush Yds" or "Passing Yards")
         # 2. Must be "standard" odds type
         # 3. adjusted_odds should be None or False (not True)
-        if (stat_type == 'Pass TDs' and 
+        if (stat_type == 'Pass Yards' and  # FIXED: Changed from 'Passing Yards' to 'Pass Yards'
             odds_type == 'standard' and
             adjusted_odds != True):
             
@@ -110,23 +113,24 @@ def extract_prizepicks_standard_lines(prizepicks_data):
                     'odds_type': odds_type
                 }
     
-    print(f"Found {len(standard_lines)} players with STANDARD Pass TDs lines:")
+    print(f"Found {len(standard_lines)} players with STANDARD Pass Yards lines:")
     for player, data in standard_lines.items():
-        print(f"  - {player} ({data['team']}): {data['line']} TDs")
+        print(f"  - {player} ({data['team']}): {data['line']} yards")  # Changed from TDs
     
     return standard_lines
 
 def match_props(sportsbook_players, prizepicks_standard_lines):
     """
     Match props between the two sources
-    Only includes players that appear in BOTH datasets
+    Only includes players that appear in BOTH datasets AND lines are within ±2.5 yards
     """
     print("\n" + "="*60)
-    print("MATCHING PROPS")
+    print("MATCHING PROPS (±2.5 yard tolerance)")
     print("="*60)
     
     matches = []
     players_not_found = []
+    players_line_mismatch = []
     
     for player_name, sb_data in sportsbook_players.items():
         # Check if this player has a PrizePicks STANDARD line
@@ -137,25 +141,39 @@ def match_props(sportsbook_players, prizepicks_standard_lines):
             sb_lines = [data['line'] for data in sb_data['sportsbook_lines'].values()]
             avg_sb_line = sum(sb_lines) / len(sb_lines) if sb_lines else 0
             
-            # We have a match!
-            match = {
-                'player': player_name,
-                'game': sb_data['game'],
-                'commence_time': sb_data['commence_time'],
-                'prizepicks': {
-                    'line': pp_data['line'],
-                    'team': pp_data['team']
-                },
-                'sportsbook': {
-                    'lines': sb_data['sportsbook_lines'],
-                    'average_line': round(avg_sb_line, 1)
-                },
-                'line_difference': round(pp_data['line'] - avg_sb_line, 1)
-            }
+            # Calculate line difference
+            line_diff = abs(pp_data['line'] - avg_sb_line)
             
-            matches.append(match)
-            print(f"✅ {player_name}: Matched!")
-            print(f"   PrizePicks: {pp_data['line']} | Sportsbook avg: {avg_sb_line}")
+            # Check if within tolerance (±2.5 yards)
+            if line_diff <= LINE_TOLERANCE:
+                # We have a match!
+                match = {
+                    'player': player_name,
+                    'game': sb_data['game'],
+                    'commence_time': sb_data['commence_time'],
+                    'prizepicks': {
+                        'line': pp_data['line'],
+                        'team': pp_data['team']
+                    },
+                    'sportsbook': {
+                        'lines': sb_data['sportsbook_lines'],
+                        'average_line': round(avg_sb_line, 1)
+                    },
+                    'line_difference': round(pp_data['line'] - avg_sb_line, 1)  # Signed difference (important for EV calculation)
+                }
+                
+                matches.append(match)
+                print(f"✅ {player_name}: Matched!")
+                print(f"   PrizePicks: {pp_data['line']} | Sportsbook avg: {avg_sb_line} | Diff: {match['line_difference']} yards")
+            else:
+                # Line difference too large
+                players_line_mismatch.append({
+                    'player': player_name,
+                    'pp_line': pp_data['line'],
+                    'sb_line': avg_sb_line,
+                    'difference': round(line_diff, 1)
+                })
+                print(f"⚠️  {player_name}: Line mismatch too large ({round(line_diff, 1)} yards)")
         else:
             players_not_found.append(player_name)
             print(f"⚠️  {player_name}: No standard PrizePicks line found")
@@ -168,6 +186,11 @@ def match_props(sportsbook_players, prizepicks_standard_lines):
         print("   1. PrizePicks doesn't have a standard line for this player")
         print("   2. They only have demon/goblin lines")
         print("   3. Name mismatch between sources")
+    
+    if players_line_mismatch:
+        print(f"\n⚠️  {len(players_line_mismatch)} players rejected due to line mismatch (>{LINE_TOLERANCE} yards):")
+        for player_info in players_line_mismatch:
+            print(f"   - {player_info['player']}: PP {player_info['pp_line']} vs SB {player_info['sb_line']} ({player_info['difference']} yard diff)")
     
     return matches
 
@@ -182,29 +205,30 @@ def display_matches(matches):
         print("\nThis could mean:")
         print("  1. Different games between sportsbook and PrizePicks")
         print("  2. PrizePicks only has demon/goblin lines for these players")
-        print("  3. Name formatting differences")
+        print("  3. Line differences exceed ±2.5 yard tolerance")
+        print("  4. Name formatting differences")
         return
     
     for match in matches:
         print(f"\n🏈 {match['player']}")
         print(f"   Game: {match['game']}")
-        print(f"   PrizePicks: {match['prizepicks']['line']} TDs")
-        print(f"   Sportsbook average: {match['sportsbook']['average_line']} TDs")
-        print(f"   Difference: {match['line_difference']} TDs")
+        print(f"   PrizePicks: {match['prizepicks']['line']} yards")  # Changed from TDs
+        print(f"   Sportsbook average: {match['sportsbook']['average_line']} yards")
+        print(f"   Difference: {match['line_difference']} yards")
         print(f"   Sportsbook lines:")
         for book, data in match['sportsbook']['lines'].items():
-            print(f"      {book}: {data['line']} TDs (odds: {data['odds']})")
+            print(f"      {book}: {data['line']} yards (odds: {data['odds']})")  # Changed from TDs
 
 def save_matches(matches):
     """Save matched props to file"""
-    with open('backend/data_storage/matched_tds.json', 'w') as f:
+    with open('backend/data_storage/matched_yards.json', 'w') as f:  # Changed filename
         json.dump(matches, f, indent=2)
-    print(f"\n📁 Saved {len(matches)} matches to backend/data_storage/matched_tds.json")
+    print(f"\n📁 Saved {len(matches)} matches to backend/data_storage/matched_yards.json")
 
 def main():
     """Main matching workflow"""
     print("\n" + "🔄" * 30)
-    print("PRIZEPICKS EV FINDER - PROP MATCHING (PASSING TDs)")
+    print("PRIZEPICKS EV FINDER - PROP MATCHING (PASSING YARDS)")  # Changed title
     print("🔄" * 30)
     
     # Load data
@@ -216,7 +240,7 @@ def main():
     # Extract ONLY standard lines from PrizePicks
     prizepicks_standard_lines = extract_prizepicks_standard_lines(prizepicks_data)
     
-    # Match them up
+    # Match them up (with ±2.5 yard tolerance)
     matches = match_props(sportsbook_players, prizepicks_standard_lines)
     
     # Display results
