@@ -78,7 +78,7 @@ body {
 /* Player Cards Grid - Centered Cards */
 .player-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 300px));
   gap: 2rem;
   margin: 1rem 0;
   justify-content: left;

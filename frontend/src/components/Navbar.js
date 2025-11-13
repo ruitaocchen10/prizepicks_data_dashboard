@@ -5,8 +5,12 @@ import "./Navbar.css";
 function Navbar({ onRefresh }) {
   const location = useLocation();
 
+  // Determine if reload button should be disabled
+  const isDisabled = location.pathname !== "/";
+
   const handleRefresh = () => {
-    if (onRefresh) {
+    // Only call onRefresh if not disabled
+    if (!isDisabled && onRefresh) {
       onRefresh();
     }
   };
@@ -33,11 +37,14 @@ function Navbar({ onRefresh }) {
           >
             User Analytics
           </Link>
-          {location.pathname === "/" && (
-            <button className="reload-button" onClick={handleRefresh}>
-              Reload
-            </button>
-          )}
+          {/* Button is always visible now */}
+          <button
+            className={`reload-button ${isDisabled ? "disabled" : ""}`}
+            onClick={handleRefresh}
+            disabled={isDisabled}
+          >
+            Reload
+          </button>
         </div>
       </div>
     </nav>

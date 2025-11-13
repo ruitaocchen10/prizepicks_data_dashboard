@@ -182,15 +182,9 @@ function UserSearchCard() {
                 </span>
               </div>
               <div className="stat-item">
-                <span className="stat-label">Avg Bet Size</span>
+                <span className="stat-label">Avg Entry Size</span>
                 <span className="stat-value">
-                  ${result.entry_stats.avg_bet_size?.toFixed(2)}
-                </span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-label">Biggest Win</span>
-                <span className="stat-value positive">
-                  ${result.entry_stats.biggest_win?.toFixed(2)}
+                  ${result.entry_stats.average_entry_amount?.toFixed(2)}
                 </span>
               </div>
             </div>
@@ -205,20 +199,20 @@ function UserSearchCard() {
                   <thead>
                     <tr>
                       <th>Player</th>
-                      <th>Position</th>
-                      <th>Team</th>
                       <th>Times Picked</th>
                       <th>Hit Rate</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {result.most_picked_players.map((player, index) => (
-                      <tr key={index}>
-                        <td>{player.player_name}</td>
-                        <td>{player.position}</td>
-                        <td>{player.team}</td>
+                    {result.most_picked_players.slice(0, 5).map((player) => (
+                      <tr key={player.player_name}>
+                        <td className="player-name-cell">
+                          {player.player_name}
+                        </td>
                         <td>{player.times_picked}</td>
-                        <td>{player.hit_rate_percentage}%</td>
+                        <td className="hit-rate-cell">
+                          {player.hit_rate_percentage}%
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -230,47 +224,52 @@ function UserSearchCard() {
           {result.recent_entries && result.recent_entries.length > 0 && (
             <div className="recent-entries-section">
               <h4>📊 Recent Entries</h4>
-              {result.recent_entries.slice(0, 5).map((entry) => (
-                <div key={entry.entry_id} className="entry-item">
-                  <div className="entry-header">
-                    <span className={`status-badge ${entry.status}`}>
-                      {entry.status}
-                    </span>
-                    <span className="entry-type">{entry.entry_type}</span>
-                    <span className="entry-date">
-                      {new Date(entry.created_at).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <div className="entry-details">
-                    <span>Wagered: ${entry.entry_amount?.toFixed(2)}</span>
-                    {entry.status === "won" && (
-                      <span className="positive">
-                        Won: ${entry.actual_payout?.toFixed(2)}
+              <div>
+                {" "}
+                {/* WRAPPER DIV FOR GRID */}
+                {result.recent_entries.slice(0, 5).map((entry) => (
+                  <div key={entry.entry_id} className="entry-item">
+                    <div className="entry-header">
+                      <span className={`status-badge ${entry.status}`}>
+                        {entry.status}
                       </span>
-                    )}
-                    {entry.status === "lost" && (
-                      <span className="negative">Lost</span>
+                      <span className="entry-type">{entry.entry_type}</span>
+                      <span className="entry-date">
+                        {new Date(entry.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <div className="entry-details">
+                      <span>Wagered: ${entry.entry_amount?.toFixed(2)}</span>
+                      {entry.status === "won" && (
+                        <span className="positive">
+                          Won: ${entry.actual_payout?.toFixed(2)}
+                        </span>
+                      )}
+                      {entry.status === "lost" && (
+                        <span className="negative">Lost</span>
+                      )}
+                    </div>
+                    {entry.picks && entry.picks.length > 0 && (
+                      <div className="picks-list">
+                        {entry.picks.map((pick, idx) => (
+                          <div key={idx} className="pick-item">
+                            <span className={`pick-result ${pick.result}`}>
+                              {pick.result === "hit"
+                                ? "✓"
+                                : pick.result === "miss"
+                                ? "✗"
+                                : "○"}
+                            </span>
+                            {pick.player_name} {pick.selection.toUpperCase()}{" "}
+                            {pick.line} {pick.stat_type}
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
-                  {entry.picks && entry.picks.length > 0 && (
-                    <div className="picks-list">
-                      {entry.picks.map((pick, idx) => (
-                        <div key={idx} className="pick-item">
-                          <span className={`pick-result ${pick.result}`}>
-                            {pick.result === "hit"
-                              ? "✓"
-                              : pick.result === "miss"
-                              ? "✗"
-                              : "○"}
-                          </span>
-                          {pick.player_name} {pick.selection.toUpperCase()}{" "}
-                          {pick.line} {pick.stat_type}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                ))}
+              </div>{" "}
+              {/* END WRAPPER DIV */}
             </div>
           )}
         </div>

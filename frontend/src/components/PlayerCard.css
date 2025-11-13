@@ -74,6 +74,7 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
+  margin: 0 0;
 }
 
 .arrow-up {
@@ -88,9 +89,10 @@
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1;
   gap: 0.25rem;
+  margin: 0 0;
 }
 
 .prop-direction.over {
@@ -109,12 +111,13 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: block;
+  margin: 0 0;
   text-align: left;
 }
 
 /* EV Display - Green Box */
 .ev-display {
-  background: #e8f5e9;
+  background: #ffebee;
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
   width: 100%;
@@ -127,7 +130,7 @@
 .ev-percentage {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #2e7d32;
+  color: #c62828;
   margin-bottom: 0.15rem;
   line-height: 1;
 }
@@ -156,11 +159,11 @@
 
 /* Negative EV */
 .ev-display.negative {
-  background: #ffebee;
+  background: #e8f5e9;
 }
 
 .ev-display.negative .ev-percentage {
-  color: #c62828;
+  color: #2e7d32;
 }
 
 .ev-display.negative .ev-label {

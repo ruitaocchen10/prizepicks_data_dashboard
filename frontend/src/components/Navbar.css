@@ -92,8 +92,27 @@
   transform: translateY(0);
 }
 
+/* DISABLED STATE - NEW */
+.reload-button.disabled {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.reload-button.disabled:hover {
+  background: #e0e0e0;
+  transform: none;
+  box-shadow: none;
+}
+
+.reload-button.disabled:active {
+  transform: none;
+}
+
 /* Responsive */
-@media (max-width: 968px) {
+@media (max-width: 700px) {
   .navbar {
     padding: 1rem 2rem;
   }
@@ -105,7 +124,7 @@
   }
 
   .navbar-brand {
-    flex: 1 0 100%;
+    flex: 1 1 100%;
     text-align: center;
   }
 

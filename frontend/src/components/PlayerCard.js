@@ -14,9 +14,9 @@ function PlayerCard({ propData }) {
 
   // Determine EV class based on risk level or edge
   const getEvClass = () => {
-    if (evValue > 3) return ""; // Positive EV (green)
-    if (evValue > 0) return "risky"; // Low positive (orange)
-    return "negative"; // Negative (red)
+    if (evValue > -1) return "";
+    if (evValue > -3.4) return "risky";
+    return "negative";
   };
 
   // Get bookmaker used
@@ -40,7 +40,7 @@ function PlayerCard({ propData }) {
             {isOver ? "↑" : "↓"}
           </span>
           <span className={`prop-direction ${isOver ? "over" : "under"}`}>
-            {isOver ? "Over" : "Under"} {propData.prizepicks.line} TDs
+            {isOver ? "Over" : "Under"} {propData.prizepicks.line} YDs
             <span className="prop-source">{bookmaker}</span>
           </span>
         </div>
