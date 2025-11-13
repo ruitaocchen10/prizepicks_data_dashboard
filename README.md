@@ -3,6 +3,7 @@
 An analytics dashboard for monitoring positive expected value (EV) betting opportunities and user behavior patterns on PrizePicks. Built as a basic framework for a tool that could be used by PrizePicks data analysts to identify potentially vulnerable lines and advantageous users.
 
 **Link to Project**: https://prizepicks-data-dashboard.vercel.app/
+**Link to my Project Logs (hopefully it's entertaining)**: https://docs.google.com/document/d/1VKEOSDAL8rq9L22MP5xu_Gl5CDpOxDFhtuZFRKod2Vg/edit?tab=t.0
 
 > **Note**: This project was created for educational purposes only. All data is either publicly available or simulated.
 > **Also Note**: If you're using the link to view the project, I am using the Render free plan so the first load might take > 30 seconds... so just keep that in mind. I am broke sorry.
