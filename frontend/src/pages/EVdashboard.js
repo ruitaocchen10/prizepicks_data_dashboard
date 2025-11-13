@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import PlayerCard from "../components/PlayerCard";
 import BreakevenTable from "../components/BreakevenTable";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+
 function EVDashboard() {
   const [evData, setEvData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ function EVDashboard() {
     setLoading(true);
     setError(null);
 
-    fetch("http://127.0.0.1:5000/api/ev-data")
+    fetch(`${API_URL}/api/ev-data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to load data");

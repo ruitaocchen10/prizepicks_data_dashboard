@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./AnalyticsCard.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+
 function TopHitLinesCard() {
   const [sortBy, setSortBy] = useState("revenue");
   const [state, setState] = useState("");
@@ -16,12 +18,12 @@ function TopHitLinesCard() {
 
   // Fetch available states and date range
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/analytics/states")
+    fetch(`${API_URL}/api/analytics/states`)
       .then((res) => res.json())
       .then((data) => setAvailableStates(data.states || []))
       .catch((err) => console.error("Failed to fetch states:", err));
 
-    fetch("http://127.0.0.1:5000/api/analytics/date-range")
+    fetch(`${API_URL}/api/analytics/date-range`)
       .then((res) => res.json())
       .then((data) => {
         setDateRange(data.date_range || {});
@@ -44,7 +46,7 @@ function TopHitLinesCard() {
     if (startDate) params.append("start_date", startDate);
     if (endDate) params.append("end_date", endDate);
 
-    fetch(`http://127.0.0.1:5000/api/analytics/top-hit-lines?${params}`)
+    fetch(`${API_URL}/api/analytics/top-hit-lines?${params}`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch data");
         return response.json();
@@ -59,20 +61,20 @@ function TopHitLinesCard() {
       });
   };
 
-  // Fetch on mount
+  // Fetch on mount and when filters change
   useEffect(() => {
     fetchTopHitLines();
-  }, []);
+  }, [sortBy, state, startDate, endDate, limit]);
 
   return (
     <div className="analytics-card">
-      <h2>🎯 Top Hit Lines</h2>
+      <h2>🎯 Top Hit Player Props</h2>
 
       <div className="filters">
         <div className="filter-group">
           <label>Sort By:</label>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="revenue">Revenue Generated</option>
+            <option value="revenue">Net Revenue</option>
             <option value="count">Times Hit</option>
           </select>
         </div>
@@ -115,17 +117,17 @@ function TopHitLinesCard() {
           <label>Limit:</label>
           <input
             type="number"
-            value={limit}
             min="1"
-            max="50"
+            max="100"
+            value={limit}
             onChange={(e) => setLimit(parseInt(e.target.value))}
           />
         </div>
-      </div>
 
-      <button className="fetch-button" onClick={fetchTopHitLines}>
-        Show Results
-      </button>
+        <button className="fetch-button" onClick={fetchTopHitLines}>
+          Refresh
+        </button>
+      </div>
 
       {loading && <p className="loading-text">Loading...</p>}
       {error && <p className="error-text">Error: {error}</p>}
@@ -137,34 +139,31 @@ function TopHitLinesCard() {
               <tr>
                 <th>Rank</th>
                 <th>Player</th>
+                <th>Stat Type</th>
                 <th>Line</th>
-                <th>Position</th>
-                <th>Team</th>
-                <th>Times Picked</th>
                 <th>Times Hit</th>
+                <th>Total Wagered</th>
+                <th>Total Paid Out</th>
+                <th>Net Revenue</th>
                 <th>Hit Rate</th>
-                <th>Revenue</th>
               </tr>
             </thead>
             <tbody>
-              {results.map((line, index) => (
+              {results.map((prop, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td className="player-name-cell">{line.player_name}</td>
-                  <td className="line-description-cell">
-                    <span className={`selection-badge ${line.selection}`}>
-                      {line.selection.toUpperCase()}
-                    </span>{" "}
-                    {line.line} {line.stat_type}
+                  <td>{prop.player_name}</td>
+                  <td>{prop.stat_type}</td>
+                  <td>{prop.line_score}</td>
+                  <td>{prop.times_hit}</td>
+                  <td>${prop.total_wagered?.toFixed(2)}</td>
+                  <td>${prop.total_paid_out?.toFixed(2)}</td>
+                  <td
+                    className={prop.net_revenue >= 0 ? "positive" : "negative"}
+                  >
+                    ${prop.net_revenue?.toFixed(2)}
                   </td>
-                  <td>{line.position}</td>
-                  <td>{line.team}</td>
-                  <td>{line.times_picked}</td>
-                  <td>{line.times_hit}</td>
-                  <td className="hit-rate-cell">{line.hit_rate_percentage}%</td>
-                  <td className="revenue-cell">
-                    ${line.total_revenue_generated?.toFixed(2)}
-                  </td>
+                  <td>{prop.hit_rate?.toFixed(1)}%</td>
                 </tr>
               ))}
             </tbody>

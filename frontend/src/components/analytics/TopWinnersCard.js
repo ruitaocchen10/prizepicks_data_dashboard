@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./AnalyticsCard.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+
 function TopWinnersCard() {
   const [sortBy, setSortBy] = useState("revenue");
   const [state, setState] = useState("");
@@ -16,13 +18,13 @@ function TopWinnersCard() {
 
   // Fetch available states for dropdown
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/analytics/states")
+    fetch(`${API_URL}/api/analytics/states`)
       .then((res) => res.json())
       .then((data) => setAvailableStates(data.states || []))
       .catch((err) => console.error("Failed to fetch states:", err));
 
     // Fetch date range for date pickers
-    fetch("http://127.0.0.1:5000/api/analytics/date-range")
+    fetch(`${API_URL}/api/analytics/date-range`)
       .then((res) => res.json())
       .then((data) => {
         setDateRange(data.date_range || {});
@@ -45,7 +47,7 @@ function TopWinnersCard() {
     if (startDate) params.append("start_date", startDate);
     if (endDate) params.append("end_date", endDate);
 
-    fetch(`http://127.0.0.1:5000/api/analytics/top-winners?${params}`)
+    fetch(`${API_URL}/api/analytics/top-winners?${params}`)
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch data");
         return response.json();
@@ -60,10 +62,10 @@ function TopWinnersCard() {
       });
   };
 
-  // Fetch on mount
+  // Fetch on mount and when filters change
   useEffect(() => {
     fetchTopWinners();
-  }, []);
+  }, [sortBy, state, startDate, endDate, limit]);
 
   return (
     <div className="analytics-card">
@@ -116,17 +118,17 @@ function TopWinnersCard() {
           <label>Limit:</label>
           <input
             type="number"
-            value={limit}
             min="1"
-            max="50"
+            max="100"
+            value={limit}
             onChange={(e) => setLimit(parseInt(e.target.value))}
           />
         </div>
-      </div>
 
-      <button className="fetch-button" onClick={fetchTopWinners}>
-        Show Results
-      </button>
+        <button className="fetch-button" onClick={fetchTopWinners}>
+          Refresh
+        </button>
+      </div>
 
       {loading && <p className="loading-text">Loading...</p>}
       {error && <p className="error-text">Error: {error}</p>}
@@ -138,25 +140,23 @@ function TopWinnersCard() {
               <tr>
                 <th>Rank</th>
                 <th>Username</th>
+                <th>Email</th>
                 <th>State</th>
-                <th>Entries</th>
                 <th>Wins</th>
-                <th>Win Rate</th>
-                <th>Wagered</th>
-                <th>Won</th>
+                <th>Total Wagered</th>
+                <th>Total Won</th>
                 <th>Net Profit</th>
-                <th>ROI</th>
+                <th>ROI %</th>
               </tr>
             </thead>
             <tbody>
               {results.map((user, index) => (
                 <tr key={user.user_id}>
                   <td>{index + 1}</td>
-                  <td className="username-cell">{user.username}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
                   <td>{user.state}</td>
-                  <td>{user.total_entries}</td>
-                  <td>{user.winning_entries}</td>
-                  <td>{user.win_rate_percentage}%</td>
+                  <td>{user.wins}</td>
                   <td>${user.total_wagered?.toFixed(2)}</td>
                   <td>${user.total_winnings?.toFixed(2)}</td>
                   <td

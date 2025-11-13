@@ -16,7 +16,7 @@ from database_queries import (  # ADD THIS IMPORT
 )
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React frontend
+CORS(app)
 
 # Path to data file
 DATA_FILE = 'backend/data_storage/ev_analysis.json'
