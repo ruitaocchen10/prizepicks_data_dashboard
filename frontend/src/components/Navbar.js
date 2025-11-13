@@ -9,7 +9,6 @@ function Navbar({ onRefresh }) {
   const isDisabled = location.pathname !== "/";
 
   const handleRefresh = () => {
-    // Only call onRefresh if not disabled
     if (!isDisabled && onRefresh) {
       onRefresh();
     }
@@ -37,7 +36,6 @@ function Navbar({ onRefresh }) {
           >
             User Analytics
           </Link>
-          {/* Button is always visible now */}
           <button
             className={`reload-button ${isDisabled ? "disabled" : ""}`}
             onClick={handleRefresh}
