@@ -6,6 +6,8 @@ An analytics dashboard for monitoring positive expected value (EV) betting oppor
 
 • **Link to my Project Logs (hopefully it's entertaining)**: https://docs.google.com/document/d/1VKEOSDAL8rq9L22MP5xu_Gl5CDpOxDFhtuZFRKod2Vg/edit?tab=t.0
 
+• **Link to my Loom Video Breakdown**: https://www.loom.com/share/22fe71d12f4e4ba898cf8d04493a94b0
+
 > **Note**: This project was created for educational purposes only. All data is either publicly available or simulated.
 > **Also Note**: If you're using the link to view the project, I am using the Render free plan so the first load might take > 30 seconds... so just keep that in mind. I am broke sorry.
 
